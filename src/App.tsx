@@ -1,7 +1,11 @@
+import EstateTransaction from "./pages/estateTransaction/Index";
+
 function App() {
   return (
     <>
-      <div className="text-5xl font-bold">Hello World!</div>
+      <div className="w-[1920px] h-[1080px]">
+        <EstateTransaction />
+      </div>
     </>
   );
 }
