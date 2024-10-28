@@ -4,13 +4,13 @@ import { useGetEstateTransaction } from "../../hooks/useGetEstateTransaction";
 import { useGetAverageTransaction } from "../../hooks/useGetAverageTransaction";
 import getPrefectures from "../../utils/getPrefectures";
 import changeObjKeyName from "./utils/changeObjKeyName";
+import { displayTypeOptions, yearOptions } from "./utils/selectOptions";
 
 import Button from "../Button";
 import Radio from "../Radio";
 import Select from "../Select";
 import Title from "../Title";
-
-import { displayTypeOptions, yearOptions } from "./utils/selectOptions";
+import Loading from "../icons/Loading";
 
 type SelectOptions = {
   value: number | string;
@@ -28,12 +28,13 @@ const Form = () => {
 
   const { updateEstateInfo } = useEstateTransactionContext(); // グローバルコンテキスト
 
-  const { fetchEstateTransaction } = useGetEstateTransaction(); // 指定した条件での「不動産取引価格」の取得関数
-  const { fetchAverageTransaction } = useGetAverageTransaction(); // 同上条件「不動産取引の全国平均価格」の取得関数
+  const { fetchEstateTransaction, dataIsLoading } = useGetEstateTransaction(); // 指定した条件での「不動産取引価格」の取得関数
+  const { fetchAverageTransaction, isLoading } = useGetAverageTransaction(); // 同条件での「不動産取引の全国平均価格」の取得関数
 
   useEffect(() => {
+    // 都道府県一覧取得
     const fetchPrefectures = async () => {
-      const prefectures = await getPrefectures(); // 都道府県一覧取得
+      const prefectures = await getPrefectures();
 
       // Selectコンポーネントで使用できるように変形
       const fixedPrefecturesArray: SelectOptions[] =
@@ -133,13 +134,14 @@ const Form = () => {
         </div>
       </div>
 
-      <div className="w-full">
-        <Button
-          // label={isLoading ? "fetching data" : "データをダウンロード"}
-          label={"データをダウンロード"}
-          type="primary"
-          onClick={clickButton}
-        />
+      <div className="w-full h-[316px] flex flex-col justify-end">
+        <Button type="primary" size="large" onClick={clickButton}>
+          <div className="flex items-center justify-center gap-2">
+            {dataIsLoading && <Loading fillColor="primary" />}
+            {isLoading && <Loading fillColor="primary" />}
+            <p>データをダウンロード</p>
+          </div>
+        </Button>
       </div>
     </div>
   );
