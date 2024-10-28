@@ -16,6 +16,7 @@ export default {
         },
         accent: {
           attention: "#ee8f00",
+          attention_light: "#fdf3e5",
           warning: "#de4335",
           emphasis: "#cb1706",
           empty_car: "#0062b1",
@@ -26,6 +27,8 @@ export default {
           black: "#23221f",
           grey: "#706d65",
           link: "#0071c1",
+          link_dark: "#005a9a",
+          link_light: "#f2f7fb",
           disabled: "#c1bdb7",
           white: "#ffffff",
         },
