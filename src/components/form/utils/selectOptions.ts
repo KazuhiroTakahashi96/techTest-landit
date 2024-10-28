@@ -1,4 +1,4 @@
-const yearOptions = [
+export const yearOptions = [
   { value: 2009, label: "2009" },
   { value: 2010, label: "2010" },
   { value: 2011, label: "2011" },
@@ -14,4 +14,25 @@ const yearOptions = [
   { value: 2021, label: "2021" },
 ];
 
-export default yearOptions;
+export const displayTypeOptions = [
+  {
+    value: 1,
+    label: "土地（住宅地）",
+  },
+  {
+    value: 2,
+    label: "土地（商業地）",
+  },
+  {
+    value: 3,
+    label: "中古マンション等",
+  },
+  {
+    value: 4,
+    label: "農地",
+  },
+  {
+    value: 5,
+    label: "林地",
+  },
+];
