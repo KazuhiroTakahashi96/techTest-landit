@@ -11,6 +11,9 @@ import Radio from "../Radio";
 import Select from "../Select";
 import Title from "../Title";
 import Loading from "../icons/Loading";
+import Spot from "../icons/Spot";
+import Calendar from "../icons/Calendar";
+import Type from "../icons/Type";
 
 type SelectOptions = {
   value: number | string;
@@ -101,9 +104,10 @@ const Form = () => {
         </div>
       </Title>
 
-      <div className="w-full h-[88px] py-6 border-t border-component-border">
+      <div className="w-full h-[88px] flex items-center justify-center py-6 border-t border-component-border">
         <Select options={options} name="場所" onChange={handleSelectPrefCode}>
-          <p className="flex items-center w-12 h-5 mr-6">
+          <p className="flex items-center gap-[6px] w-16 h-5 mr-6">
+            <Spot fillColor="black" width={11} height={14} />
             <span className="text-sm">場所</span>
           </p>
         </Select>
@@ -111,14 +115,16 @@ const Form = () => {
 
       <div className="w-full h-[88px] py-6 border-t border-component-border">
         <Select options={yearOptions} name="年度" onChange={handleSelectYear}>
-          <p className="flex items-center w-12 h-5 mr-6">
+          <p className="flex items-center gap-[6px] w-16 h-5 mr-6">
+            <Calendar fillColor="black" width={13} height={14} />
             <span className="text-sm">年度</span>
           </p>
         </Select>
       </div>
 
       <div className="w-full flex items-start pt-6 border-t border-component-border">
-        <p className="flex items-center w-12 h-5 mr-6">
+        <p className="flex items-center gap-[6px] w-12 h-5 mr-6">
+          <Type fillColor="black" width={14} height={14} />
           <span className="text-sm">種類</span>
         </p>
         <div className="flex flex-col gap-3">
