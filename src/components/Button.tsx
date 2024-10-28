@@ -12,15 +12,15 @@ const Button = ({ label, type, size, onClick, children }: Props) => {
   switch (type) {
     case "primary":
       classNameByType =
-        "bg-text-link text-white rounded-sm hover:bg-text-link_dark active:bg-text-link disabled:bg-text-disabled";
+        "bg-text-link text-white rounded-sm hover:bg-component-text_link_dark active:bg-text-link disabled:bg-text-disabled";
       break;
     case "secondary":
       classNameByType =
-        "bg-white text-text-link rounded-sm border border-text-link hover:bg-text-link_light active:bg-white disabled:bg-text-disabled";
+        "bg-white text-text-link rounded-sm border border-text-link hover:bg-component-text_link_light active:bg-white disabled:bg-text-disabled";
       break;
     case "danger":
       classNameByType =
-        "bg-white text-accent-warning rounded-sm border border-accent-warning hover:bg-accent-attention_light active:bg-white disabled:bg-text-disabled";
+        "bg-white text-accent-warning rounded-sm border border-accent-warning hover:bg-component-attention_light active:bg-white disabled:bg-text-disabled";
       break;
   }
 
