@@ -2,7 +2,7 @@ type Props = {
   label?: string;
   name: string;
   children?: React.ReactNode;
-  options: { value: string | number; label: string }[];
+  options: { value: string | number; label: string | number }[];
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
@@ -12,7 +12,7 @@ const Select = ({ label, name, children, options, onChange }: Props) => {
       {children}
       {label ? <p className="">{label}</p> : null}
       <select name={name} className="w-full h-full pl-2" onChange={onChange}>
-        <option>選択してください</option>
+        <option value="">選択してください</option>
         {options.map((opt) => (
           <option key={opt.label} value={opt.value}>
             {opt.label}
