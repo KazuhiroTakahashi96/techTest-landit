@@ -1,9 +1,9 @@
-import MainLayout from "../../layout/MainLayout";
-import Form from "../../components/features/form/Form";
-import Title from "../../components/Title";
-import Chart from "../../components/features/chart/Chart";
+import MainLayout from '../../layout/MainLayout';
+import Form from '../../components/features/form/Form';
+import Title from '../../components/Title';
+import Chart from '../../components/features/chart/Chart';
 
-import Graph from "../../assets/icons/graph.svg";
+import Graph from '../../assets/icons/graph.svg';
 
 const EstateTransaction = () => {
   return (
@@ -14,7 +14,7 @@ const EstateTransaction = () => {
         </div>
       </Title>
 
-      <div className="w-[1840px] h-full flex gap-6 py-10">
+      <div className="w-[1840px] h-[860px] flex gap-6 py-10">
         <Chart />
         <Form />
       </div>

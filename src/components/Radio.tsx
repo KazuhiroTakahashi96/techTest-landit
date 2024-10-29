@@ -15,7 +15,7 @@ const Radio = ({ label, value, name, onChange }: Props) => {
           id={label}
           value={value}
           onChange={onChange}
-          className="rounded-full w-6 h-6 border border-text-link"
+          className="rounded-full w-6 h-6 border border-text-link bg-text-link peer-checked:bg-component-text_link_dark peer-checked:border-component-text_link_dark"
         />
         <span className="ml-2 text-sm text-text-black">{label}</span>
       </label>

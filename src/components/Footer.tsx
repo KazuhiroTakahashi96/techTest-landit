@@ -2,7 +2,7 @@ import Window from '../assets/icons/window.svg';
 
 const Footer = () => {
   return (
-    <footer className="w-full h-[50px] flex items-center justify-between py-4 px-8 border-t border-white text-white bg-black">
+    <footer className="w-full h-[50px] flex items-center justify-between py-4 px-8 border-t border-solid border-[rgba(255, 255, 255, 0.2)] text-white footer">
       <div className="flex items-center justify-center gap-6">
         <p className="text-xs leading-[18px] flex items-center gap-2">
           <span>利用規約</span>

@@ -26,7 +26,7 @@ const Button = ({ label, type, size, onClick, children }: Props) => {
 
   switch (size) {
     case 'default':
-      classNameBySize = 'w-[130px] h-10 py-2 px-4 text-sm';
+      classNameBySize = 'w-full h-10 py-2 px-4 text-sm';
       break;
 
     case 'large':

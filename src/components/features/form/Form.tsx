@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
-import { useEstateTransactionContext } from "../../../context/useEstateTransactionContext";
-import { useGetEstateTransaction } from "../../../hooks/useGetEstateTransaction";
-import { useGetAverageTransaction } from "../../../hooks/useGetAverageTransaction";
-import getPrefectures from "../../../utils/getPrefectures";
-import changeObjKeyName from "./utils/changeObjKeyName";
-import { displayTypeOptions, yearOptions } from "./utils/selectOptions";
+import { useEffect, useState } from 'react';
+import { useEstateTransactionContext } from '../../../context/useEstateTransactionContext';
+import { useGetEstateTransaction } from '../../../hooks/useGetEstateTransaction';
+import { useGetAverageTransaction } from '../../../hooks/useGetAverageTransaction';
+import getPrefectures from '../../../utils/getPrefectures';
+import changeObjKeyName from './utils/changeObjKeyName';
+import { displayTypeOptions, yearOptions } from './utils/selectOptions';
 
-import Button from "../../Button";
-import Radio from "../../Radio";
-import Select from "../../Select";
-import Title from "../../Title";
-import Loading from "../../icons/Loading";
-import Spot from "../../icons/Spot";
-import Calendar from "../../icons/Calendar";
-import Type from "../../icons/Type";
+import Button from '../../Button';
+import Radio from '../../Radio';
+import Select from '../../Select';
+import Loading from '../../icons/Loading';
+import Spot from '../../icons/Spot';
+import Calendar from '../../icons/Calendar';
+import Type from '../../icons/Type';
 
 type SelectOptions = {
   value: number | string;
@@ -21,13 +20,11 @@ type SelectOptions = {
 };
 
 const Form = () => {
-  const [selectedPrefCode, setSelectedPrefCode] = useState<string>(""); // 「場所」のステート
-  const [selectedYear, setSelectedYear] = useState<string>(""); // 「年度」のステート
-  const [selectedDisplayType, setSelectedDisplayType] = useState<string>(""); // 「種類」のステート
+  const [selectedPrefCode, setSelectedPrefCode] = useState<string>(''); // 「場所」のステート
+  const [selectedYear, setSelectedYear] = useState<string>(''); // 「年度」のステート
+  const [selectedDisplayType, setSelectedDisplayType] = useState<string>(''); // 「種類」のステート
   // 「場所」の選択肢のステート
-  const [options, setOptions] = useState<SelectOptions[]>([
-    { value: "", label: "" },
-  ]);
+  const [options, setOptions] = useState<SelectOptions[]>([{ value: '', label: '' }]);
 
   const { updateEstateInfo } = useEstateTransactionContext(); // グローバルコンテキスト
 
@@ -40,8 +37,7 @@ const Form = () => {
       const prefectures = await getPrefectures();
 
       // Selectコンポーネントで使用できるように変形
-      const fixedPrefecturesArray: SelectOptions[] =
-        changeObjKeyName(prefectures);
+      const fixedPrefecturesArray: SelectOptions[] = changeObjKeyName(prefectures);
 
       setOptions([...fixedPrefecturesArray]);
     };
@@ -76,15 +72,11 @@ const Form = () => {
     );
 
     // 指定した条件で、不動産取引価格の全国平均取得
-    const averageTransaction = await fetchAverageTransaction(
-      selectedYear,
-      selectedDisplayType
-    );
+    const averageTransaction = await fetchAverageTransaction(selectedYear, selectedDisplayType);
 
-    const type: { value: number; label: string } | undefined =
-      displayTypeOptions.find((opt) =>
-        opt.value === Number(selectedDisplayType) ? opt.label : ""
-      );
+    const type: { value: number; label: string } | undefined = displayTypeOptions.find((opt) =>
+      opt.value === Number(selectedDisplayType) ? opt.label : ''
+    );
     if (type?.label) {
       updateEstateInfo({
         year: averageTransaction.years[0].year,
@@ -98,11 +90,9 @@ const Form = () => {
 
   return (
     <div className="w-[360px] h-full p-6 rounded bg-main-primary_light text-text-black">
-      <Title>
-        <div className="w-full h-12">
-          <h3 className="h-6 text-left text-base">表示内容を選択</h3>
-        </div>
-      </Title>
+      <div className="w-full h-12">
+        <h3 className="h-6 text-left text-base">表示内容を選択</h3>
+      </div>
 
       <div className="w-full h-[88px] flex items-center justify-center py-6 border-t border-component-border">
         <Select options={options} name="場所" onChange={handleSelectPrefCode}>
