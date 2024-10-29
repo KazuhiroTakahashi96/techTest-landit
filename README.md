@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
+# フロントエンド技術課題　ー　 LANDIT 株式会社
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 主な使用技術
 
-Currently, two official plugins are available:
+- React + TypeScript
+- TailwindCSS
+- chart.js, react-chartjs-2：グラフ描画に使用
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ディレクトリ構成（src 配下）
 
-## Expanding the ESLint configuration
+機能・ページ追加等でも拡張しやすいディレクトリ構成を、私なりに考えて以下のようにしました。
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+├── assets  // svgや画像ファイルを配置
+│
+├── components  // 直下のファイルは汎用的に使うコンポーネント　例：ボタン、セレクト、ラジオボタン等
+│   │
+│   ├── features  // このフォルダ配下は、特定の箇所でしか使わないコンポーネントとしました
+│   │   ├── chart  // グラフの表示
+│   │   └── form  // フォーム
+│   │
+│   └── icons  // assets/iconsのsvgで、色を動的に変えたいsvgをコンポーネント化したものを配置
+│
+├── context  // useContextを使用するときはここからインポートする。providersとまとめてよかったかもしれない。。
+│
+├── hooks  // カスタムフックスを配置。APIを叩く処理は主にここのファイルに記述
+│
+├── layout  // レイアウト用フォルダ。ヘッダー、コンテンツ部分、フッターで構成。props.childrenを「コンテンツ部分」に表示するレイアウト。
+│
+├── pages  // 上記レイアウトコンポーネントを読み込み、「コンテンツ部分」に表示する内容を記述。
+│   └── estateTransaction  // pages直下にルーティング毎にフォルダを配置して、その配下にファイルを配置していくのがベター？
+│
+├── providers  // useContextでグローバルステート管理したい内容を書いたファイルをここに配置。contextとまとめてもよかったかもしれない。。
+│
+└── utils  // 汎用的に使うような関数等を配置するフォルダ。（カスタムフックスが適当かもしれませんが）都道府県情報取得処理を書いたファイルをここにも配置した。
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### ホスティング
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Firebase を利用
+  - https://frontend-test-landit.web.app/
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### ローカル環境での起動方法
+
+- [RESAS API](https://opendata.resas-portal.go.jp/)の利用登録をし、API キーを取得する
+- ルート配下に`.env`ファイルを作成する
+- `.env`ファイル内に、`VITE_RESAS_API_KEY=取得したAPIキー`と記述する
+- ターミナルを開き、以下コマンドを実行
+  - `npm i`
+  - `npm run dev`
+- 指定された URL を開けばローカル環境でも試せる
+
+#### お詫び
+
+- グラフ表示コンポーネント（`/src/components/features/chart/Chart.tsx`）内で、グラフの棒をデザイン通りのグラデーションで表示するための処理の所で出た型エラーが解決できず、この箇所だけ`any`型を許容するようにしました。
+
+##### 課題に取り掛かっている時の心の声（感想・反省・課題・独り言）
+
+- Figmaのデザイン通りに再現するの難しい。
+  - CSS難しい。。
+  - でもデザイン通りにできると楽しい・嬉しい
+- コンポーネントの設計難しい
+  - どれくらいの粒度で細分化すればいいんだろう
+  - どういうプロパティを渡すようにすればいいんだろう
+- フォルダ構成どうすればいいんだろう。
+- カスタムフックはこれで合っているのか？
+- ロジックと描画？は極力分けた方がいいとのことだが、果たしてこれでよかったのだろうか？（特に`components/features/form/Form.tsx`コンポーネント）
+- React（主にuseContext）の挙動どうなってるんだ。。なんで他のコンポーネントで読み込んで使用しようとするとエラーになるんだ。。
+- 型エラーが多くて大変。。でも型のおかげで予測変換（？）が出てくるし恩恵も大きい！
+- コメント残し過ぎかな？？
+- chart.jsでのグラフの描画、なんか楽しい。
+- テストまでできなくて悔しい。
+  - デザインの再現、React x TypeScriptの実装に時間がかかりすぎた。。
+- 形になると達成感がすごい。フロント開発楽しい！
