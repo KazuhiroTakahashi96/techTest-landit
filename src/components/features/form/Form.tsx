@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useEstateTransactionContext } from '../../../context/useEstateTransactionContext';
 import { useGetEstateTransaction } from '../../../hooks/useGetEstateTransaction';
 import { useGetAverageTransaction } from '../../../hooks/useGetAverageTransaction';
-import getPrefectures from '../../../utils/getPrefectures';
+// import getPrefectures from '../../../utils/getPrefectures';
 import changeObjKeyName from './utils/changeObjKeyName';
-import { displayTypeOptions, yearOptions } from './utils/selectOptions';
+import { displayTypeOptions, yearOptions, prefectures } from './utils/selectOptions';
 
 import Button from '../../Button';
 import Radio from '../../Radio';
@@ -34,7 +34,9 @@ const Form = () => {
   useEffect(() => {
     // 都道府県一覧取得
     const fetchPrefectures = async () => {
-      const prefectures = await getPrefectures();
+      // デプロイしたら、なぜか取得できず。。ローカル環境では問題ない。。
+      // 期限も迫っているため、./utils/selectOptions ファイルにデータを配置し、インポートするようにした
+      // const prefectures = await getPrefectures();
 
       // Selectコンポーネントで使用できるように変形
       const fixedPrefecturesArray: SelectOptions[] = changeObjKeyName(prefectures);
