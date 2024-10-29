@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export type Prefectures = {
   prefCode: number;
@@ -10,14 +10,11 @@ const useGetPrefectures = () => {
 
   useEffect(() => {
     const fetchPrefectures = async () => {
-      const res = await fetch(
-        "https://opendata.resas-portal.go.jp/api/v1/prefectures",
-        {
-          headers: {
-            "X-API-KEY": import.meta.env.VITE_RESAS_API_KEY,
-          },
-        }
-      );
+      const res = await fetch('https://opendata.resas-portal.go.jp/api/v1/prefectures', {
+        headers: {
+          'X-API-KEY': import.meta.env.VITE_RESAS_API_KEY,
+        },
+      });
 
       const data = await res.json();
       // console.log(data);

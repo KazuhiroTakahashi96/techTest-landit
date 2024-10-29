@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 // ------------- 特定の年度・種類の不動産取引価格の全国平均価格を取得する -------------
 export const useGetAverageTransaction = () => {
@@ -12,7 +12,7 @@ export const useGetAverageTransaction = () => {
         `https://opendata.resas-portal.go.jp/api/v1/townPlanning/estateTransaction/bar?year=${year}&prefCode=-&cityCode=-&displayType=${displayType}`,
         {
           headers: {
-            "X-API-KEY": import.meta.env.VITE_RESAS_API_KEY,
+            'X-API-KEY': import.meta.env.VITE_RESAS_API_KEY,
           },
         }
       );

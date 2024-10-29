@@ -1,4 +1,4 @@
-import LogoLandit from "../assets/images/logo-landit.png";
+import LogoLandit from '../assets/images/logo-landit.png';
 
 const Header = () => {
   return (

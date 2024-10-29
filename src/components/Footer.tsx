@@ -1,4 +1,4 @@
-import Window from "../assets/icons/window.svg";
+import Window from '../assets/icons/window.svg';
 
 const Footer = () => {
   return (

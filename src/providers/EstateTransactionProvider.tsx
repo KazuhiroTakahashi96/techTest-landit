@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -15,8 +15,8 @@ type EstateInfo = {
 export const EstateTransactionContext = createContext({
   estateInfo: {
     year: 0,
-    prefecture: "",
-    displayType: "",
+    prefecture: '',
+    displayType: '',
     transactionPrice: 0,
     averagePrice: 0,
   },
@@ -36,8 +36,8 @@ const EstateTransactionProvider = ({ children }: Props) => {
   // グローバル管理する不動産取引価格のステート
   const [estateInfo, setEstateInfo] = useState<EstateInfo>({
     year: 0, // 年度
-    prefecture: "", // 場所
-    displayType: "", // 種類
+    prefecture: '', // 場所
+    displayType: '', // 種類
     transactionPrice: 0, // 不動産取引価格
     averagePrice: 0, // 全国平均の不動産取引価格
   });
@@ -65,9 +65,7 @@ const EstateTransactionProvider = ({ children }: Props) => {
   };
 
   return (
-    <EstateTransactionContext.Provider value={value}>
-      {children}
-    </EstateTransactionContext.Provider>
+    <EstateTransactionContext.Provider value={value}>{children}</EstateTransactionContext.Provider>
   );
 };
 
