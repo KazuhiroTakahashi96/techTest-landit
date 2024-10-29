@@ -1,4 +1,4 @@
-import { useEstateTransactionContext } from "../../context/useEstateTransactionContext";
+import { useEstateTransactionContext } from "../../../context/useEstateTransactionContext";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,9 +12,9 @@ import {
 import { Bar } from "react-chartjs-2";
 import { options } from "./options";
 
-import Spot from "../icons/Spot";
-import Calendar from "../icons/Calendar";
-import Type from "../icons/Type";
+import Spot from "../../icons/Spot";
+import Calendar from "../../icons/Calendar";
+import Type from "../../icons/Type";
 
 ChartJS.register(
   CategoryScale,

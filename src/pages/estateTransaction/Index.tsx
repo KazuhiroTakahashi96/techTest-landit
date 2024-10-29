@@ -1,7 +1,7 @@
 import MainLayout from "../../layout/MainLayout";
-import Form from "../../components/form/Form";
+import Form from "../../components/features/form/Form";
 import Title from "../../components/Title";
-import Chart from "../../components/chart/Chart";
+import Chart from "../../components/features/chart/Chart";
 
 import Graph from "../../assets/icons/graph.svg";
 
