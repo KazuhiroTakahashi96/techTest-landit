@@ -40,7 +40,7 @@
 - Firebase を利用
   - https://frontend-techtest-landit.web.app/
 
-### ローカル環境での起動方法
+## ローカル環境での起動方法
 
 - [RESAS API](https://opendata.resas-portal.go.jp/)の利用登録をし、API キーを取得する
   - 補足：[新規利用登録は10月31日までとのこと。サービス自体も来年で終了。。](https://opendata.resas-portal.go.jp/docs/api/v1/index.html)
@@ -51,11 +51,11 @@
   - `npm run dev`
 - 指定された URL を開けばローカル環境でも試せる
 
-#### お詫び
+### お詫び
 
 - グラフ表示コンポーネント（`/src/components/features/chart/Chart.tsx`）内で、グラフの棒をデザイン通りのグラデーションで表示するための処理の所で出た型エラーが解決できず、この箇所だけ`any`型を許容するようにしました。
 
-##### 課題に取り掛かっている時の心の声（感想・反省・課題・独り言）\*読まなくてもいいです
+#### 課題に取り掛かっている時の心の声（感想・反省・課題・独り言）\*読まなくてもいいです
 
 - Figmaのデザイン通りに再現するの難しい。
   - CSS難しい。。
@@ -69,7 +69,7 @@
 - ロジックと描画？は極力分けた方がいいとのことだが、果たしてこれでよかったのだろうか？（特に`components/features/form/Form.tsx`コンポーネント）
 - React（主にuseContext）の挙動どうなってるんだ。なぜ他のコンポーネントで読み込んで使用しようとするとエラーになるんだ。。
   - Reactは勉強中だったが、取り組む前よりかは力が付いた。
-  - 周辺ライブラリ(React Router, React Hook Form, Zustand)等も使って、何か作ってみたくなった。
+  - 周辺ライブラリ(React Router, React Hook Form, ReduxやZustand)等も使って何か作ってみたくなった。
 - 型エラーが多くて大変。。
   - でも型のおかげで予測変換（？）が出てくるし恩恵も大きい！
 - コメント残し過ぎかな？？
