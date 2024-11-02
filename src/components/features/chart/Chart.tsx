@@ -31,6 +31,7 @@ const Chart = () => {
       {
         data: priceData, // データの配列(labelsと要素数同じ)
         barThickness: 200,
+        // 実装の参考：https://stackoverflow.com/questions/71087466/react-chartjs-2-gradient-fill-error-on-canvas-context
         backgroundColor: (
           context: ScriptableContext<'bar'>
           // グラフの棒の色を別々のグラデーションにするには [色1, 色2] を戻り値とするしかないが、そうすると型エラーが出るためここだけany型を許容させてもらいました
